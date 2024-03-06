@@ -22,6 +22,10 @@ let errors: HTMLParagraphElement[]=[yearError, monthError, dayError];
 let input: HTMLInputElement[]=[inputYear, inputMonth, inputDay];
 let label: HTMLLabelElement[]=[yearL, monthL, dayL];
 
+let outP: HTMLSpanElement[]=[outYear, outMonth, outDay];
+let outP2: HTMLSpanElement[]=[outYear2, outMonth2, outDay2];
+
+
 let date = new Date();
 let currentDay= date.getDate();
 let currentMonth= date.getMonth()+1;
@@ -57,29 +61,32 @@ button.addEventListener('click', function calculateAge(){
     let month: number = Number (inputMonth.value);
     let year: number = Number (inputYear.value);
     let daysMonth:number = daysInTheMonth(year, month);
-    // let monthName= ().toLocaleString("en-ng", {month: "long"});
-
+ 
     let ageYear: number= currentYear-year;
     let ageMonth:number =  currentMonth-month;
     let ageDay:number =  currentDay-day;
-
-    // let dateValues:number[]=[ageYear, ageMonth, ageDay];
-    // let outP: HTMLSpanElement[]=[outYear, outMonth, outDay];
+ 
 
     let previousMonthDays:number= daysInTheMonth(year, (month-1))
     
-    if (day >0 && month > 0 && year > 0 && month<=12 && year <= currentYear ){
-
-        refresh();
+    if (day >0 && month > 0 && year > 0 && month<=12 && year <= currentYear ){      
         
         if (day ===31){
             if (month ===4|| month ===6 ||month===9
                 || month===11 ){
+                    currentDay=0;
+                    currentMonth=0;
+                    ageDay=0-day;
+                    ageMonth= 0-month;
+                    ageYear = 0-year;
+
+                    output(ageYear, ageMonth, ageDay);
                     
+
                     inputDay.style.borderColor= 'red';
                     dayError.innerText = ("Days in " + months[month-1] + " can't exceed 30 days");
                     dayL.style.color='red';
-
+                    
                     inputMonth.style.borderColor= 'red';
                     monthError.innerText = ("Days in " + months[month-1] + " can't exceed 30 days");
                     monthL.style.color='red';
@@ -87,6 +94,15 @@ button.addEventListener('click', function calculateAge(){
                 }};
         if (month===2){
             if(day >daysMonth){
+
+                currentDay=0;
+                currentMonth=0;
+                ageDay=0-day;
+                ageMonth= 0-month;
+                ageYear = 0-year;
+
+                output(ageYear, ageMonth, ageDay);
+                    
 
                 inputDay.style.borderColor= 'red';
                 dayError.innerText = ("February " + year+ " was "+ daysMonth+" days.");
@@ -99,6 +115,15 @@ button.addEventListener('click', function calculateAge(){
             }};
         if (year === currentYear){
             if(month > currentMonth){
+
+                currentDay=0;
+                currentMonth=0;
+                ageDay=0-day;
+                ageMonth= 0-month;
+                ageYear = 0-year;
+
+                output(ageYear, ageMonth, ageDay);
+                
                 inputMonth.style.borderColor= 'red';
                 monthError.innerText = ("Future date not valid");
                 monthL.style.color='red';
@@ -111,7 +136,15 @@ button.addEventListener('click', function calculateAge(){
 
 
             if (month === currentMonth && day > currentDay){
-                // currentDay=0;
+ 
+                currentDay=0;
+                currentMonth=0;
+                ageDay=0-day;
+                ageMonth= 0-month;
+                ageYear = 0-year;
+
+                output(ageYear, ageMonth, ageDay);
+                
                 
                 inputDay.style.borderColor= 'red';
                 dayError.innerText = ("Future date not valid");
@@ -127,49 +160,80 @@ button.addEventListener('click', function calculateAge(){
 
         };
 
-        if (month >currentMonth && year != currentYear){
-            currentYear-=1
-            ageMonth = (currentMonth+12)-month
-        };
+        if (month >currentMonth && year < currentYear){
+            currentMonth+=12;
+            if (day>currentDay){
+                currentMonth-=1;
+                currentDay+=previousMonthDays;
+                ageMonth = currentMonth-month;
+                ageDay=currentDay-day;
+                ageYear=currentYear-year;
+                ageYear-=1
 
-        if (month >currentMonth && year === currentYear){
+                output(ageYear, ageMonth, ageDay);
+            };
             
-            ageDay = 0-day;
-        };
+            if (day<=currentDay){
+                ageMonth = currentMonth-month;
+                ageDay=currentDay-day;
+                ageYear=currentYear-year;
 
+                output(ageYear, ageMonth, ageDay);
+            };
+            
+        };
 
         
-        if (day>currentDay && month !=currentMonth && year !=currentYear){
+        if (day>currentDay){
+            if (month <currentMonth && year <currentYear){
+                currentMonth -= 1;
+                currentDay += previousMonthDays
+                ageDay= currentDay-day; 
+                ageMonth= currentMonth-month;
+                ageYear= currentYear-year;
+                // done
+ 
 
-            currentMonth -= 1;
-            currentDay += previousMonthDays
-            ageDay= currentDay-day;           
+                output(ageYear, ageMonth, ageDay);
+                 
+
+            };
+
+            if (month >=currentMonth && year <currentYear){
+                console.log(currentYear);
+                currentMonth +=12;
+                currentMonth -= 1;
+                currentDay += previousMonthDays
+                ageDay= currentDay-day; 
+                ageMonth= currentMonth-month;
+                ageYear= currentYear-year;
+                console.log(ageMonth);
+
+                // done
+            };
+
+            
+        // ageDay=currentDay-day;
+        // ageMonth=currentMonth-month;
+        // ageYear=currentYear-year;
+
+        // output(ageYear, ageMonth, ageDay);
+
+            
+
+                       
+        } else{
+            ageYear=currentYear-year;
+            ageMonth=currentMonth-month;
+            ageDay=currentDay-day;
+            output(ageYear, ageMonth, ageDay);
+
+
         };
-
-        let dateValues:number[]=[ageYear, ageMonth, ageDay];
-        let outP: HTMLSpanElement[]=[outYear, outMonth, outDay];
-        let outP2: HTMLSpanElement[]=[outYear2, outMonth2, outDay2];
-
-        for(let i=0; i<dateValues.length; i++){
-            if (dateValues[i]<0){
-                outP[i].innerText="--";
-                outP2[i].innerText="Invalid";
-                outP2[i].style.color='red'
-            };
-
-            if (dateValues[i]>=0  && dateValues[i]<10){
-                outP[i].innerText= String ("0"+dateValues[i]);
-
-                if (dateValues[i]<10){
-                    outP[i].innerText= String ("0"+dateValues[i]);
     
-                };
 
-            };
-        }
-                
-    
-    } else{
+
+            } else{
 
         error();
     
@@ -210,5 +274,42 @@ button.addEventListener('click', function calculateAge(){
         };
     
     
+    };
+
+    function output(ageYear:number, ageMonth:number, ageDay:number) {
+
+        let dateValues:number[]=[ageYear, ageMonth, ageDay];
+        
+        
+
+
+        for(let i=0; i<dateValues.length; i++){
+            outP[i].innerText= String (dateValues[i])
+
+            if (dateValues[i]>=0  && dateValues[i]<10){
+                // let outAnswer:string =String (dateValues[i])
+                outP[i].innerText= 0+String ( dateValues[i]);
+ 
+            };
+
+            if (dateValues[i]>10){
+                outP[i].innerText= String (dateValues[i]);
+            }
+            if (dateValues[i]<0){
+                outP[i].innerText="--";
+                outP[i].style.color='red'
+                outP2[i].innerText="Invalid";
+                outP2[i].style.color='red'
+            };
+
+            
+
+            
+        };
+                
+    
+
+
+        
     };
 })
