@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;
+  600&family=Barlow+Semi+Condensed:ital,wght@0,500;0,600;1,
+  600&family=Fraunces:ital,opsz,wght@1,9..144,700&family=Hanken+Grotesk:wght@500;700;800&family=Montserrat:wght@500;700&family=Open+Sans:wght@400;700&family=Outfit:wght@200;300;400;500;600;700&family=Poppins:wght@200;400;500;600;700&family=Raleway:wght@400;700&family=Rubik:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet"> -->
+
+  <!-- <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png"> -->
+  
+  <title>Frontend Mentor | Age calculator app</title>
+
+  <link rel="stylesheet" href="./index.css">
+  <script src="age.js" defer></script>
+</head>
+<body>
+  <div class="body">
+    <div class="mainDiv">
+      <!-- <form action=""> -->
+        <div class="inputWrap">
+          <div class="dateInput">
+            <label id="dayL" for="day">DAY</label>
+            <input type="number" placeholder="DD" id="day">
+            <p id="dayError"  class="error"></p>
+          </div>
+          <div class="dateInput">
+            <label id="monthL" for="month">MONTH</label>
+            <input type="number" placeholder="MM" id="month">
+            <p id="monthError" class="error"></p>
+          </div>
+          <div class="dateInput">
+            <label id="yearL"  for="year">YEAR</label>
+            <input class="input" type="number" placeholder="YYYY" id="year">
+            <p id="yearError" class="error"></p>
+          </div>
+        </div>
+    
+        <div class="line">
+          <hr>
+          <button id="button" type="button" class="button"><svg xmlns="http://www.w3.org/2000/svg" width="46" height="44"
+            viewBox="0 0 46 44"><g fill="none" stroke="#FFF" stroke-width="2">
+              <path d="M1 22.019C8.333 21.686 23 25.616 23 44M23 44V0M45 22.019C37.667 21.686 23 25.616 23 44"/></g></svg>
+          </button>
+        </div>
+      <!-- </form> -->
+      <div class="OutputWrap">
+          <p ><span class="outP" id="outYear">--</span> <span class="dates" id="outYear2">years</span></p>
+          <p ><span class="outP" id="outMonth">--</span> <span class="dates" id="outMonth2">months</span></p>
+          <p><span class="outP" id="outDay">--</span> <span class="dates" id="outDay2">days</span></p>
+      </div>
+  
+    </div>
+    
+    <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+      Coded by <a href="#">Lukmon Akingbade</a>.
+    </div>
+  </div>
+</body>
+</html>
