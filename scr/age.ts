@@ -176,7 +176,9 @@ button.addEventListener('click', function calculateAge(){
             if (day<=currentDay){
                 ageMonth = currentMonth-month;
                 ageDay=currentDay-day;
+                currentYear-=1;
                 ageYear=currentYear-year;
+                
 
                 output(ageYear, ageMonth, ageDay);
             };
@@ -207,9 +209,10 @@ button.addEventListener('click', function calculateAge(){
                 ageDay= currentDay-day; 
                 ageMonth= currentMonth-month;
                 ageYear= currentYear-year;
+                ageYear-=1;
                 console.log(ageMonth);
 
-                // done
+                // doneee
             };
 
             
