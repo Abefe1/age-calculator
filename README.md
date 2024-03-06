@@ -78,8 +78,9 @@ I want to improve in some areas like:
 ## Author
 
 - Website - [Lukmon Akingbade Olanrewaju](https://abefe1.github.io/ALO-portfolio/)
-- Frontend Mentor - [@yAbefe1](https://www.frontendmentor.io/profile/Abefe1)
--Email- [lukmonakingbade@gmail.com]
+- Frontend Mentor - [@Abefe1](https://www.frontendmentor.io/profile/Abefe1)
+- Email-  [lukmonakingbade@gmail.com]
+
   
 
 ## Acknowledgments
