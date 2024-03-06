@@ -36,7 +36,14 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![](./design/Screenshot%202024-03-06%20185558.png)
+![](./design/Screenshot%202024-03-06%20185644.png)
+![](./design/February-error.png)
+![](./design/February-error2.png)
+![](./design/future1.png)
+![](./design/future2.png)
+![](./design/month-with-days-error.png)
+![](./design/month-with-days-error2.png)
  
 
 ### Links

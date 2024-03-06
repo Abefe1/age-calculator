@@ -63,8 +63,8 @@ button.addEventListener('click', function calculateAge(){
     let ageMonth:number =  currentMonth-month;
     let ageDay:number =  currentDay-day;
 
-    let dateValues:number[]=[ageYear, ageMonth, ageDay];
-    let outP: HTMLSpanElement[]=[outYear, outMonth, outDay];
+    // let dateValues:number[]=[ageYear, ageMonth, ageDay];
+    // let outP: HTMLSpanElement[]=[outYear, outMonth, outDay];
 
     let previousMonthDays:number= daysInTheMonth(year, (month-1))
     
@@ -75,6 +75,7 @@ button.addEventListener('click', function calculateAge(){
         if (day ===31){
             if (month ===4|| month ===6 ||month===9
                 || month===11 ){
+                    
                     inputDay.style.borderColor= 'red';
                     dayError.innerText = ("Days in " + months[month-1] + " can't exceed 30 days");
                     dayL.style.color='red';

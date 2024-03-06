@@ -48,8 +48,8 @@ button.addEventListener('click', function calculateAge() {
     let ageYear = currentYear - year;
     let ageMonth = currentMonth - month;
     let ageDay = currentDay - day;
-    let dateValues = [ageYear, ageMonth, ageDay];
-    let outP = [outYear, outMonth, outDay];
+    // let dateValues:number[]=[ageYear, ageMonth, ageDay];
+    // let outP: HTMLSpanElement[]=[outYear, outMonth, outDay];
     let previousMonthDays = daysInTheMonth(year, (month - 1));
     if (day > 0 && month > 0 && year > 0 && month <= 12 && year <= currentYear) {
         refresh();
@@ -77,8 +77,7 @@ button.addEventListener('click', function calculateAge() {
         }
         ;
         if (year === currentYear) {
-            if (month > currentMonth && day<currentDay) {
-                ageDay = 0 - day;
+            if (month > currentMonth) {
                 inputMonth.style.borderColor = 'red';
                 monthError.innerText = ("Future date not valid");
                 monthL.style.color = 'red';
@@ -104,9 +103,9 @@ button.addEventListener('click', function calculateAge() {
             ageMonth = (currentMonth + 12) - month;
         }
         ;
-        // if (month > currentMonth && year === currentYear) {
-        //     ageDay = 0 - day;
-        // }
+        if (month > currentMonth && year === currentYear) {
+            ageDay = 0 - day;
+        }
         ;
         if (day > currentDay && month != currentMonth && year != currentYear) {
             currentMonth -= 1;
@@ -120,7 +119,6 @@ button.addEventListener('click', function calculateAge() {
         for (let i = 0; i < dateValues.length; i++) {
             if (dateValues[i] < 0) {
                 outP[i].innerText = "--";
-                outP[i].style.color = 'red';
                 outP2[i].innerText = "Invalid";
                 outP2[i].style.color = 'red';
             }
